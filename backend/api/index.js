@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
-const authRoutes = require("./routes/auth.js");
-const menuRoutes = require("./routes/menu");
-const orderRoutes = require("./routes/order");
+const authRoutes = require("../routes/auth.js");
+const menuRoutes = require("../routes/menu.js");
+const orderRoutes = require("../routes/order.js");
 
 dotenv.config();
 
