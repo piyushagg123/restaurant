@@ -8,7 +8,9 @@ const Menu = () => {
 
   const getMenuItems = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/menu");
+      const response = await axios.get(
+        "https://restaurant-backend-lsug.onrender.com/api/menu"
+      );
       setMenuItems(response.data);
 
       // Extract unique categories from menu items

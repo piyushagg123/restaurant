@@ -17,7 +17,7 @@ const Signup = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/auth/register",
+        "https://restaurant-backend-lsug.onrender.com/api/auth/register",
         { email, password, name, role }
       );
 
@@ -32,7 +32,7 @@ const Signup = () => {
       //   console.log("-----------------------------------");
       //   console.log(userDetails);
       //   setLogin(true);
-      // navigate("/");
+      navigate("/");
     } catch (error) {
       console.error("Error during login:", error);
     }

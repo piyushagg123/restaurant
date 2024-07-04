@@ -6,25 +6,11 @@ const OrderHistory = () => {
   const { accessToken, login } = useContext(AuthContext);
   const [data, setData] = useState([]);
 
-  if (!login) {
-    return (
-      <>
-        <div>
-          <br />
-          <br />
-          <br />
-          <br />
-          <p>Login as a customer first to access your history</p>
-        </div>
-      </>
-    );
-  }
-
   const [loading, setLoading] = useState(true);
   const getData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/orders/history",
+        "https://restaurant-backend-lsug.onrender.com/api/orders/history",
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -42,6 +28,34 @@ const OrderHistory = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  if (!login) {
+    return (
+      <>
+        <div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <p>Login as a customer first to access your history</p>
+        </div>
+      </>
+    );
+  }
+
+  if (!accessToken) {
+    return (
+      <>
+        <div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <p>Login as a customer first to access your history</p>
+        </div>
+      </>
+    );
+  }
 
   if (loading)
     return (
@@ -68,14 +82,29 @@ const OrderHistory = () => {
           {item.orderItems.map((item2) => (
             <div className="flex gap-3">
               <p>{item2.menuItem.name}</p>
-              <p>Price: {item2.menuItem.price}</p>
-              <p> Quantity:{item2.quantity}</p>
+              <p>
+                <span className="font-bold">Price:</span> {item2.menuItem.price}
+              </p>
+              <p>
+                <span className="font-bold">Quantity:</span> {item2.quantity}
+              </p>
             </div>
           ))}
-          <p>Status:{item.status}</p>
-          <p>Table Number:{item.tableNumber}</p>
-          <p>Total Amount: {item.totalAmount}</p>
-          <p>Time and date of this order creation: {item.createdAt}</p>
+          <p>
+            <span className="font-bold">Status:</span> {item.status}
+          </p>
+          <p>
+            <span className="font-bold">Table Number:</span> {item.tableNumber}
+          </p>
+          <p>
+            <span className="font-bold">Total Amount:</span> {item.totalAmount}
+          </p>
+          <p>
+            <span className="font-bold">
+              Time and date of this order creation:
+            </span>{" "}
+            {item.createdAt}
+          </p>
         </div>
       ))}
     </div>

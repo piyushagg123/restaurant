@@ -42,7 +42,7 @@ const Cart = () => {
     console.log(orderData);
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/orders",
+        "https://restaurant-backend-lsug.onrender.com/api/orders",
         orderData,
         {
           headers: {

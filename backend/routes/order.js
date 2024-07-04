@@ -12,6 +12,7 @@ const router = express.Router();
 router.get("/", authMiddleware, getOrders);
 router.post("/", authMiddleware, placeOrder);
 router.put("/:orderId", authMiddleware, updateOrderStatus);
+// router.put("/:orderId", updateOrderStatus);
 router.get("/history", authMiddleware, getOrderHistory);
 
 module.exports = router;
